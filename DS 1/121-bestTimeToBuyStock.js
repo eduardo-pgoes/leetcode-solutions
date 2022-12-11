@@ -3,14 +3,16 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let i, currentProfit = -1;
+    let i, maxProfit = 0, buyPrice = prices[0];
 
     for (i = 0; i < prices.length; i++) {
-        currentPricesArr = prices.slice(i);
-        let bestSliceProfit = Math.max(...currentPricesArr) - currentPricesArr[0];
-        currentProfit = Math.max(currentProfit, bestSliceProfit);
+        if (buyPrice > prices[i]) {
+            buyPrice = prices[i];
+        } else if (prices[i] - buyPrice > maxProfit) {
+            maxProfit = prices[i] - buyPrice;
+        }
     }  
-    return (currentProfit > 0) ? currentProfit : 0;
+    return maxProfit;
 };
 
 let prices = [7,6,4,3,1];
