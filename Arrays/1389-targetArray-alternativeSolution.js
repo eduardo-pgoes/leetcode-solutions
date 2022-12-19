@@ -5,7 +5,7 @@
  */
 var createTargetArray = function(nums, index) {
     let n = index.length;
-    let target = Array(n).fill(0);
+    let target = [];
     for (let i = 0; i < n; i++) {
         insertAtIndex(target, nums[i], index[i]);
     }  
@@ -13,7 +13,7 @@ var createTargetArray = function(nums, index) {
 };
 
 function insertAtIndex(array, value, index) {
-    for (let i = array.length; i < index; i++) {
+    for (let i = array.length; i > index; i--) {
         array[i] = array[i-1];
     }
     array[index] = value;
